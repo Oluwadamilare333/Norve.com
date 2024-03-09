@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Transfer Payment - Paystack</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  .payment-container {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+  }
+  .payment-header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .payment-header h2 {
+    margin: 0;
+    color: #333;
+  }
+  .payment-form {
+    display: flex;
+    flex-direction: column;
+  }
+  .form-group {
+    margin-bottom: 15px;
+  }
+  .form-group label {
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 5px;
+  }
+  .form-group input[type="text"], .form-group input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  .form-group input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .form-group input[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+  /* Loading overlay */
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    display: none;
+  }
+  .overlay-content {
+    text-align: center;
+    color: #fff;
+  }
+</style>
+</head>
+<body>
+<div class="payment-container">
+  <div class="payment-header">
+    <h2>Transfer Payment</h2>
+  </div>
+  <form class="payment-form" id="paymentForm">
+    <div class="form-group">
+      <label for="amount">Amount (Minimum 1200NGN = $1):</label>
+      <input type="number" id="amount" name="amount" placeholder="Enter amount" min="1200" required>
+    </div>
+    <div class="form-group">
+      <label for="account_number">Account Number:</label>
+      <input type="text" id="account_number" name="account_number" placeholder="Enter account number" required>
+    </div>
+    <div class="form-group">
+      <label for="bank_code">Bank Code:</label>
+      <input type="text" id="bank_code" name="bank_code" placeholder="Enter bank code" required>
+    </div>
+    <div class="form-group">
+      <input type="submit" value="Transfer">
+    </div>
+  </form>
+</div>
+
+<!-- Loading overlay -->
+<div class="overlay" id="loadingOverlay">
+  <div class="overlay-content">
+    <h3>Loading...</h3>
+  </div>
+</div>
+
+<script>
+document.getElementById("paymentForm").addEventListener("submit", function(event) {
+  event.preventDefault(); // Prevent form submission
+  
+  // Show loading overlay
+  document.getElementById("loadingOverlay").style.display = "flex";
+  
+  // Redirect to index.html after 3 seconds
+  setTimeout(function() {
+    window.location.href = "index.html";
+  }, 3000);
+});
+</script>
+
+</body>
+</html>

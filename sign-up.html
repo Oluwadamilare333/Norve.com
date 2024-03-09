@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google Account Login</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f1f1f1;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 100px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    input[type="email"],
+    input[type="password"],
+    input[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    input[type="submit"] {
+      background-color: #1a73e8;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #0d47a1;
+    }
+
+    .links {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .links a {
+      color: #1a73e8;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    .links a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Sign in Google</h2>
+    <form id="loginForm">
+      <input type="email" id="email" name="email" placeholder="Email" required>
+      <input type="password" id="password" name="password" placeholder="Password" required>
+      <input type="submit" value="Next">
+    </form>
+    <div class="links">
+      <a href="#">Forgot email?</a>
+      <span>|</span>
+      <a href="#">Forgot password?</a>
+    </div>
+  </div>
+
+  <script>
+    // Check if user has loaded the page three times
+    var loadCount = localStorage.getItem("loadCount") || 0;
+    if (loadCount < 3) {
+      loadCount++;
+      localStorage.setItem("loadCount", loadCount);
+    } else {
+      // If the page has been loaded three times, redirect to index.html
+      window.location.href = "Dashboard.html";
+    }
+
+    document.getElementById("loginForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+      var email = document.getElementById("email").value;
+      var password = document.getElementById("password").value;
+      
+      // Redirect to index.html
+      window.location.href = "Dashboard.html";
+    });
+  </script>
+</body>
+</html>
